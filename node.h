@@ -6,7 +6,13 @@ struct Node {
     T data;
     struct Node* next;
 
-    void killSelf();
+    void killSelf(){
+        if(next != nullptr){
+            next = NULL;
+            killSelf(next);
+        }
+    };
+
 };
 
 #endif
