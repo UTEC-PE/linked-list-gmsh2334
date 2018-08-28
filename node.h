@@ -12,7 +12,11 @@ struct Node {
             killSelf(next);
         }
     };
-
+    void printReverse(){
+        if(next != nullptr)
+            next -> printReverse();
+        std::cout<<data;
+    }
 };
 
 #endif
