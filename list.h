@@ -45,7 +45,7 @@ class List {
                     }
                 }
                 tail=temp->data;
-                delete temp;
+                delete temp; // No tienes que borrar el puntero
             return tail;
         };
         void push_front(T value){
@@ -53,7 +53,7 @@ class List {
                 temp -> data = value;
                 temp -> next = head;
                 head = temp;
-                delete temp;
+                delete temp; // No se debe dar delete al temp
                 nodes++;
         };
 
@@ -72,7 +72,7 @@ class List {
             temp -> next= NULL;
             tail=temp;
             nodes++;
-            delete temp, nn;
+            delete temp, nn; // No debes liberar la memoria de un push
         };
 
         void pop_front(){
@@ -133,14 +133,14 @@ class List {
             other.head = nullptr;
         };
         bool empty(){
-            if(!head){
+            if(!head){ // No debes dar throw, solo retornar si es vacía o no
                 throw "Lista vacia";
             }else{
                 throw "La lista contiene elementos";
             }
         };
         int size(){
-            Nodo<T>* temp=head;
+            Nodo<T>* temp=head; // Es Node, no Nodo, esto no va a compilar
             int num=0;
             if(!head){
                 throw "El tamaño de la lista es 0";
@@ -150,7 +150,7 @@ class List {
                     num++;
                 }
             }
-            delete temp;
+            delete temp; // No se libera la memoria
             return num;
         };
         void print(){
@@ -165,9 +165,9 @@ class List {
                 head -> printReverse();
             cout<<head->data;
         };
-        void clear(){
+        void clear(){ // El tamaño no se iguala a 0
             while(head) {
-                head = head->killSelf();
+                head = head->killSelf(); // killSelf retorna void, no sirve para igualar, esto no compila
             }
         };
         Iterator<T> begin(){
@@ -177,7 +177,7 @@ class List {
 
         };
         ~List(){
-           clear();
+           clear(); // El clear está mal implementado
         };
 };
 #endif

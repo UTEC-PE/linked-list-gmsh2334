@@ -7,7 +7,7 @@ struct Node {
     struct Node* next;
 
     void killSelf(){
-        if(next != nullptr){
+        if(next != nullptr){ // Así no es esta función, esto no va a borrar nada
             next = NULL;
             killSelf(next);
         }
